@@ -7,15 +7,15 @@ dev/install:
 
 .PHONY:	fmt
 fmt:
-	pyink .
-	isort .
+	poetry run pyink .
+	poetry run isort .
 
 
 .PHONY:	lint
 lint:
-	ruff check .
+	poetry run ruff check .
 
 
 .PHONY: typecheck
 typecheck:
-	pyright .
+	poetry run pyright .
