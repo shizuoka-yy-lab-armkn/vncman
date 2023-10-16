@@ -1,0 +1,46 @@
+name: frontend
+on:
+  push:
+    branches:
+      - main
+      - develop
+    paths:
+      - '**/*.py'
+      - .github/workflows/python.yml
+  pull_request:
+    branches:
+      - main
+      - develop
+    paths:
+      - '**/*.py'
+      - .github/workflows/python.yml
+  workflow_dispatch:
+
+jobs:
+  lint-format:
+    name: "Lint & Format"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install poetry
+        run: pipx install poetry
+
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+          cache: poetry
+
+      - name: Install dependencies
+        run: make dev/install
+
+      - run: make lint
+
+      - run: make typecheck
+
+      - run: make fmt
+
+      - name: Commit format changes
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: "style: [bot] apply code formatter changes"
