@@ -18,7 +18,7 @@ USER = osutil.must_getenv("USER")
 def _print_running_server_infos(servers: list[VncServerInfo]) -> None:
     for s in servers:
         print(
-            "  {} (listeningPort={}, display=:{}, pid={})".format(
+            "  {} (port={}, display=:{}, pid={})".format(
                 homedir2tilde(s.pid_file_path, HOME), s.port, s.display_id, s.pid
             )
         )
@@ -83,7 +83,7 @@ def cmd_up(
         subprocess.run(f"pgrep -u {USER} Xtightvnc | xargs kill", shell=True)
         exit(1)
 
-    print(f"{GREEN} [OK] Successfully launched your VNC server:")
+    print(f"{GREEN}[OK] Successfully launched your VNC server:{RESET}")
     _print_running_server_infos(servers)
 
 
