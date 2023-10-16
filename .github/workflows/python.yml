@@ -1,4 +1,4 @@
-name: frontend
+name: python
 on:
   push:
     branches:
@@ -7,6 +7,7 @@ on:
     paths:
       - '**/*.py'
       - .github/workflows/python.yml
+      - Makefile
   pull_request:
     branches:
       - main
@@ -14,6 +15,7 @@ on:
     paths:
       - '**/*.py'
       - .github/workflows/python.yml
+      - Makefile
   workflow_dispatch:
 
 jobs:
