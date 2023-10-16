@@ -8,6 +8,7 @@ dev/install:
 .PHONY:	fmt
 fmt:
 	pyink .
+	isort .
 
 
 .PHONY:	lint
