@@ -1,7 +1,7 @@
 .PHONY:	dev/install
 dev/install:
 	poetry install
-	rm .venv/bin/black
+	rm -f .venv/bin/black
 	ln -s pyink .venv/bin/black
 
 
